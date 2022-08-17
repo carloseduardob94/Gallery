@@ -2,6 +2,7 @@ import * as C from './App.styles'
 import * as Photos from './services/photos'
 import {useState, useEffect} from 'react'
 import { Photo } from './types/Photo'
+import { PhotoItem } from './components/PhotoItem' 
 
 
 const App = () => {
@@ -18,13 +19,20 @@ const App = () => {
     getPhotos()
   }, [])
 
+  const handleFormSubmit = () => {
+
+  }
+
 
   return(
       <C.Container>
         <C.Area>
           <C.Header>Galeria de fotos</C.Header>
 
-          {/* Área de upload */}
+          <C.UploadForm method="POST" onSubmit={handleFormSubmit}> 
+            <input type="file" name="image" />
+            <input type="submit" name="Enviar" />
+          </C.UploadForm>
 
           {loading && 
             <C.ScreenWarning>
@@ -36,7 +44,7 @@ const App = () => {
           {!loading && photos.length > 0 &&
             <C.PhotoList>
               {photos.map((item, index) => (
-                <div>{item.name}</div>
+                <PhotoItem key={index} url={item.url} name={item.name}/>
               ))}
             </C.PhotoList>
           }
@@ -47,7 +55,6 @@ const App = () => {
             <div>Não há fotos cadastradas...</div>
           </C.ScreenWarning>
           }
-
 
         </C.Area>
       </C.Container>
