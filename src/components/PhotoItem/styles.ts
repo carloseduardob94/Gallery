@@ -13,3 +13,26 @@ export const Container = styled.div`
     border-radius: 10px;
   }
 `;
+
+export const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #CCC;
+  border: none;
+  border-radius: 5px;
+
+  color: red;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+
+  cursor: pointer;
+  margin: auto;
+  margin-top: 10px;
+  
+
+  &:hover {
+    filter: brightness(.9);
+  }
+`;

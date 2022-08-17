@@ -11,15 +11,16 @@ const App = () => {
   const [uploading, setUploading] = useState(false)
 
   useEffect(() => {
-    const getPhotos = async () => {
-      setLoading(true)
-      setPhotos(await Photos.getAll())
-      setLoading(false)
-
-    }
     getPhotos()
   }, [])
 
+  const getPhotos = async () => {
+    setLoading(true)
+    setPhotos(await Photos.getAll())
+    setLoading(false)
+  }
+
+  
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -40,6 +41,11 @@ const App = () => {
         setPhotos(newPhotoList)
       }
     }
+  }
+
+  const handleDeleteClick = async(name:string) => {
+    await Photos.deletePhoto(name)
+    getPhotos()
   }
 
 
@@ -64,16 +70,16 @@ const App = () => {
           {!loading && photos.length > 0 &&
             <C.PhotoList>
               {photos.map((item, index) => (
-                <PhotoItem key={index} url={item.url} name={item.name}/>
+                <PhotoItem key={index} url={item.url} name={item.name} onDelete={handleDeleteClick}/>
               ))}
             </C.PhotoList>
           }
 
           {!loading && photos.length === 0 &&
             <C.ScreenWarning>
-            <div className='emoji'>😞</div>
-            <div>Não há fotos cadastradas...</div>
-          </C.ScreenWarning>
+              <div className='emoji'>😞</div>
+              <div>Não há fotos cadastradas...</div>
+            </C.ScreenWarning>
           }
 
         </C.Area>
