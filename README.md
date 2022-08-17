@@ -2,6 +2,8 @@
 
 ## Aprendizados
 
+#### 🚀 React
+#### 🚀 Typescript
 #### 🚀 Utilizando o vite
 #### 🚀 Styled-components
 #### 🚀 Props
@@ -10,6 +12,10 @@
 #### 🚀 Components
 #### 🚀 Types
 #### 🚀 Firebase
+
+## Sobre o projeto
+
+<div>Esse projeto é de uma galeria de fotos onde usamos o firebase como banco de dados para armazenar nossas fotos. Através do TS manipulamos o upload de foto para o banco de dados, a renderização em tela e a delete de fotos no banco. A interface toda desenvolvida em components e a estilização do mesmo em CSS in JS com o styled-components</div>
 
 
 
