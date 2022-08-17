@@ -33,6 +33,7 @@ const App = () => {
 
       if(result instanceof Error){
         alert(`${result.name} - ${result.message}`)
+
       }else{
         let newPhotoList = [...photos]
         newPhotoList.push(result)
@@ -50,6 +51,7 @@ const App = () => {
           <C.UploadForm method="POST" onSubmit={handleFormSubmit}> 
             <input type="file" name="image" />
             <input type="submit" name="Enviar" />
+            {uploading && 'Enviando...'}
           </C.UploadForm>
 
           {loading && 
